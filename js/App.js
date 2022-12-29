@@ -22,7 +22,6 @@ addBtn.onclick = () =>{
     }
     listArr.push(userData);
     localStorage.setItem("New Todo", JSON.stringify(listArr));
-    inputBox.value = '';
     showTasks();
     addBtn.classList.remove("active");
 }
@@ -40,7 +39,6 @@ document.body.addEventListener('keypress', (e) =>{
     }
     listArr.push(userData);
     localStorage.setItem("New Todo", JSON.stringify(listArr)); 
-    inputBox.value = '';
     showTasks();
     addBtn.classList.remove("active");
     }
@@ -66,6 +64,7 @@ function showTasks(){
         newLiTag += `<li>${element} <span onclick ="deleteTask(${index})"><i class="fas fa-trash"></i></span></li>`;
     });
     todo.innerHTML = newLiTag;
+    inputBox.value = '';
 }
 
 function deleteTask(index){
