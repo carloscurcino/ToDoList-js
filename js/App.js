@@ -27,6 +27,26 @@ addBtn.onclick = () =>{
     addBtn.classList.remove("active");
 }
 
+document.body.addEventListener('keypress', (e) =>{
+    let userData = inputBox.value;
+    if(e.key == 'Enter' && userData.trim() != 0){
+
+        let userData = inputBox.value;
+        let getLocalStorage = localStorage.getItem("New Todo"); 
+        if(getLocalStorage == null){
+            listArr = [];
+    }else{
+        listArr = JSON.parse(getLocalStorage); 
+    }
+    listArr.push(userData);
+    localStorage.setItem("New Todo", JSON.stringify(listArr)); 
+    inputBox.value = '';
+    showTasks();
+    addBtn.classList.remove("active");
+    }
+});
+
+
 function showTasks(){
     let getLocalStorage = localStorage.getItem("New Todo");
     if(getLocalStorage == null){
